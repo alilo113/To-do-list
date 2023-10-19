@@ -1,3 +1,5 @@
+import "./index.css"
+
 function App() {
   return (
     <>
@@ -10,14 +12,9 @@ function App() {
       <input type="checkbox"/>
       <label>Todo</label>
     </div>
-    <div>
-      <input type="checkbox"/>
-      <label>Todo</label>
-    </div>
     </div>
     </>
-  )
-                            
+  )                  
 }
 
 export default App
