@@ -1,48 +1,25 @@
 import { useState } from "react"
+import { TodoForm } from "./TodoForm";
 
 function App() {
-  const [todoValue, setTodoValue] = useState("");
   const [todos, setNewTodos] = useState([]);
 
-  function setTodo(e){
-    e.preventDefault();
+  function deleteTodo(id){
     setNewTodos((currentTodo) => {
-      return [...currentTodo, 
-        {
-          id: crypto.randomUUID(),
-          value: todoValue,
-          checked: false
-        }
-      ]
+      return currentTodo.filter(todo => todo.id !== id)
     })
   }
 
-  /*function checkTodo(id, completed){
-    setNewTodos((currentTodo) => {
-      currentTodo.map(todo => {
-        if(id === todo.id){
-          return {...todo, completed}
-        }
-      })
-    })
-  }*/
-
   return (
     <>
-      <form onSubmit={setTodo}>
-        <input value={todoValue}
-         onChange={e => setTodoValue(e.target.value)}
-         type="text"
-         id="todoValue">
-        </input>
-        <button>add todo</button>
-      </form>
+      <TodoForm/>
       {todos.map(todo => {
         return (
           <div key={todo.id}>
             <div>
-            <input type='checkbox' checked={todo.checked} /*onChange={e => checkTodo(e.target.completed)}*//>
+            <input type='checkbox'/>
             {todo.value}
+            <button onClick={() => deleteTodo(todo.id)}>Delete</button>
             </div>
           </div>
         )
