@@ -8,5 +8,3 @@ A simple Todo List application built using React. This application allows you to
 - Mark tasks as completed.
 - Delete tasks from the list.
 - Clean and user-friendly interface.
-
-## Getting Started
