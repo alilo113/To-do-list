@@ -1,18 +1,11 @@
 import { useState } from "react"
 
-export function TodoForm(){
+export function TodoForm(props){
     const [todoValue, setTodoValue] = useState("");
 
     function setTodo(e){
         e.preventDefault();
-        setNewTodos((currentTodo) => {
-            return [...currentTodo, 
-                {
-                    id: crypto.randomUUID(),
-                    value: todoValue,
-                }
-            ]
-        })
+        props.addTodos(todoValue)
     }
     
     return (

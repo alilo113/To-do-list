@@ -4,6 +4,17 @@ import { TodoForm } from "./TodoForm";
 function App() {
   const [todos, setNewTodos] = useState([]);
 
+  function addTodo(todoValue){
+    setNewTodos((currentTodo) => {
+      return [...currentTodo, 
+          {
+              id: crypto.randomUUID(),
+              value: todoValue,
+          }
+      ]
+    })
+  }
+
   function deleteTodo(id){
     setNewTodos((currentTodo) => {
       return currentTodo.filter(todo => todo.id !== id)
@@ -12,7 +23,7 @@ function App() {
 
   return (
     <>
-      <TodoForm/>
+      <TodoForm addTodos={addTodo}/>
       {todos.map(todo => {
         return (
           <div key={todo.id}>
